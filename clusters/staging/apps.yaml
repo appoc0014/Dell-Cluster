@@ -1,4 +1,4 @@
-apiVersion: kustomize.tookkit.fluxcd.io/vi
+apiVersion: kustomize.toolkit.fluxcd.io/vi
 kind: Kustomization
 metadata:
   name: apps
@@ -10,5 +10,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./apps/staging/tictactoe
+  path: ./apps/staging
   prune: true
