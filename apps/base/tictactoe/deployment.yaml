@@ -6,11 +6,11 @@ spec:
   serviceName: "postgres"
   replicas: 1
   selector:
-	matchLabels:
-  	app: tictactoe
+    matchLabels:
+      app: tictactoe
   template:
-	metadata:
-  	labels:
+    metadata:
+      labels:
     	app: postgres
 	spec:
   	  containers:
