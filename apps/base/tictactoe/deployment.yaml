@@ -3,33 +3,32 @@ kind: StatefulSet
 metadata:
   name: tictactoe
 spec:
-  serviceName: "postgres"
+  serviceName: postgres
   replicas: 1
   selector:
     matchLabels:
-      app: tictactoe
+      app: postgres
   template:
     metadata:
       labels:
-      app: postgres
+        app: postgres
     spec:
-       containers:
-       - name: postgres
-       image: postgres:14 # You can change the version here
-       env:
-             - name: POSTGRES_PASSWORD
-               value: "your-secret-password" # Make sure to store it securely
-       volumeMounts:
-             - name: postgres-data
-               mountPath: /var/lib/postgresql/data
+      containers:
+        - name: postgres
+          image: postgres:14
+          env:
+            - name: POSTGRES_PASSWORD
+              value: "your-secret-password"
+          volumeMounts:
+            - name: tictactoe-data
+              mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
-  - metadata:
-    name: tictactoe-data
-  spec:
-    accessModes:
-      - ReadWriteOnce
-    resources:
-      requests:
-        storage: 2Gi
-    storageClassName: standard
-
+    - metadata:
+        name: tictactoe-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Gi
+        storageClassName: standard
