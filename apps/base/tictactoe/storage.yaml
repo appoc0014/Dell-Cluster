@@ -3,7 +3,6 @@ kind: PersistentVolume
 metadata:
   name: tictactoe-pvc
   labels:
-    type: local
     app: tictactoe
 spec:
   storageClassName: standard
