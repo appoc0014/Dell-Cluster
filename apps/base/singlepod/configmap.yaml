@@ -4,8 +4,7 @@ metadata:
   name: singlepod-configmap
   namespace: singlepod
 data:
-  index.html:|
-  <!DOCTYPE html>
+  index.html: |
   <html>
   <head>
     <title>My Simple Page</title>
