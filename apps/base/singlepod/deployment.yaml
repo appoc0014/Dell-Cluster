@@ -19,5 +19,10 @@ spec:
       containers:
       - image: nginx
         name: nginx
-        resources: {}
-status: {}
+        volumeMounts:
+        - name: singlepod-vol
+          mountPath: /usr/share/nginx/html
+      volumes:
+        - name: singlepod-vol
+          configMap:
+            name: singlepod-configmap
