@@ -4,7 +4,10 @@ metadata:
   name: singlepod
 spec:
   ports:
-    - port: 80
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
   selector:
     app: singlepod
   type: ClusterIP
