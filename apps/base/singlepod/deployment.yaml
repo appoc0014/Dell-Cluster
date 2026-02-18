@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: singlepod
+  name: singlepod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: singlepod
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: singlepod
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {}

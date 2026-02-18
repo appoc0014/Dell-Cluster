@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: tictactoe
-data:
-  PORT: "3005"
-  POSTGRES_DB: ttt
-  POSTGRES_USER: ttt
-  POSTRES_PASSWORD: tttpass
