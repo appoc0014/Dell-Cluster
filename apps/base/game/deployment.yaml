@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: appoc0014/tictactoe-web:1.0
+          image: appoc14/tictactoe-web:1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
