@@ -23,7 +23,7 @@ spec:
   selector:
     app: game-web
   ports:
-    - name: http
-      port: 5000
+      protocal: TCP
+      port: 80
       targetPort: 5000
-  type: ClusterIP
+      nodePort: 30000
