@@ -24,6 +24,6 @@ spec:
     app: game-web
   ports:
     - name: http
-      port: 80
+      port: 5000
       targetPort: 5000
   type: ClusterIP
