@@ -1,3 +1,4 @@
+# Deploy database using info from secret file for databse config
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -40,7 +41,7 @@ spec:
             claimName: postgres-pvc
 
 ---
-
+# Deploy custom web app
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -58,7 +59,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: appoc14/tictactoe-web:1.0
+          image: appoc14/tictactoe-web:1.0 
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
