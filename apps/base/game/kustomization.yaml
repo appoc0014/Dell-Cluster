@@ -6,3 +6,5 @@ resources:
   - service.yaml
   - storage.yaml
   - secret.yaml
+  - nginx-gateway.yaml
+  - values.yaml
