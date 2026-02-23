@@ -7,3 +7,4 @@ resources:
   - storage.yaml
   - secret.yaml
   - nginx-gateway.yaml
+  - game-route.yaml
