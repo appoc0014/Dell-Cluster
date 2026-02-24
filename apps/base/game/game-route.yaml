@@ -7,8 +7,6 @@ spec:
   parentRefs:
     - name: game-gateway
       sectionName: http
-    hostnames:
-      - localhost
   rules:
     - matches:
         - path:
