@@ -5,10 +5,10 @@ metadata:
   namespace: game
 spec:
   parentRefs:
-    - name: game-gateway
-      sectionName: http
+  - name: game-gateway
+  sectionName: http
 
-    hostnames:
+  hostnames:
     - game-app.com 
   rules:
     - matches:
