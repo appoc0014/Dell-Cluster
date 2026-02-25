@@ -9,7 +9,7 @@ spec:
     sectionName: http
 
   hostnames:
-    - game.app.com 
+    - game.x4.com 
   rules:
     - matches:
         - path:

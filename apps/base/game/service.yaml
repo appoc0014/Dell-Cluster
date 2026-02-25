@@ -20,7 +20,7 @@ metadata:
   name: game-web
   namespace: game
 spec:
-  type: NodePort
+  #type: NodePort
   selector:
     app: game-web
   ports:
