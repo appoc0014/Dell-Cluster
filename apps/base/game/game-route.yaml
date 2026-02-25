@@ -6,7 +6,7 @@ metadata:
 spec:
   parentRefs:
   - name: game-gateway
-  sectionName: http
+    sectionName: http
 
   hostnames:
     - game-app.com 
