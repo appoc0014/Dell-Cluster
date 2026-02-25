@@ -14,8 +14,8 @@ spec:
     - matches:
         - path:
             type: PathPrefix
-            value: /game-web
+            value: /
       backendRefs:
         - name: game-service
-          port: 5000
+          port: 80
           weight: 1
