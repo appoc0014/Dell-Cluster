@@ -33,7 +33,6 @@ spec:
   type: ClusterIP
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -50,7 +49,7 @@ spec:
       port: 80
       targetPort: 8080
       nodePort: 30080
-    - name: httpx
+    - name: https
       protocol: TCP
       port: 443
       targetPort: 8443
