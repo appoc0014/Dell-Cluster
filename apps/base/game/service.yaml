@@ -45,13 +45,13 @@ spec:
     app.kubernetes.io/instance: ngf
     app.kubernetes.io/name: nginx-gateway
   ports:
-    - name: https
-      protocol: TCP
-      port: 443
-      targetPort: 443
-      nodePort: 30443
     - name: http
       protocol: TCP
       port: 80
       targetPort: 80
       nodePort: 30080
+    - name: httpx
+      protocol: TCP
+      port: 443
+      targetPort: 443
+      nodePort: 30443
