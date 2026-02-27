@@ -8,6 +8,7 @@ spec:
     app: postgres
   ports:
     - name: pg
+      protocol: TCP
       port: 5432
       targetPort: 5432
   type: ClusterIP
@@ -24,10 +25,12 @@ spec:
   selector:
     app: game-web
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 5000
         # nodePort: 30000
+  type: ClusterIP
 
 ---
 
@@ -39,7 +42,8 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app.kubernetes.io/name: nginx-gateway-fabric
+    app.kubernetes.io/instance: ngf
+    app.kubernetes.io/name: nginx-gateway
   ports:
     - name: https
       protocol: TCP
