@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: game-ingress
+  namespace: game
+spec:
+  rules:
+  - host: game.x4.com
+    http:
+    paths:
+      - pathType: Prefix
+      path: "/"
+      backend:
+        service:
+        name: game-web
+        port:
+          number: 80
