@@ -32,13 +32,6 @@ spec:
       nodePort: 30000
         #  type: ClusterIP
 
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: monitoring
-
 #apiVersion: v1 
 #kind: Service
 #metadata:
