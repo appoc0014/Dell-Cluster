@@ -1,0 +1,32 @@
+# Namespace of app to operate in
+namespace: game
+
+# Name space for postgress
+sql_namespace: postgres
+
+# Normal port for Web App
+port: 80
+
+# Postgress app name
+appsqlname: postgres
+
+# Web App name
+appname: game-web
+
+# Port for Web App
+app_port: 5000
+
+# Port for Postgres
+port_postgres: 5432
+
+# Image name for Web App
+app_image: appoc14/tictactoe-web:1.0
+
+# Image name for Posgres
+sql_image: postgres:16-alpine
+
+# Node Port for web app
+nodeport: 30000
+
+# Replica count for deployment files
+replica_count: 1 

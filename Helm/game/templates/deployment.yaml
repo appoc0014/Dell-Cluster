@@ -1,0 +1,80 @@
+# Deploy database using info from secret file for databse config
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appsqlname }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replica_count }}
+  selector:
+    matchLabels:
+      app: {{ .Values.appsqlname }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appsqlname }}
+    spec:
+      containers:
+        - name: {{ .Values.appsqlname }}
+          image: postgres:16-alpine
+          ports:
+            - containerPort: {{ .Values.port_postgres }}
+          envFrom:
+            - secretRef:
+                name: postgres-secret
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+          readinessProbe:
+            exec:
+              command: ["sh", "-lc", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            exec:
+              command: ["sh", "-lc", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+            initialDelaySeconds: 20
+            periodSeconds: 10
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: postgres-pvc
+
+---
+# Deploy custom web app
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appname }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replica_count }}
+  selector:
+    matchLabels:
+      app: {{ .Values.appname }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appname }}
+    spec:
+      containers:
+        - name: web
+          image: appoc14/tictactoe-web:1.0 
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.app_port }}
+          envFrom:
+            - secretRef:
+                name: web-secret
+          readinessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.app_port }}
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.app_port}}
+            initialDelaySeconds: 20
+            periodSeconds: 10

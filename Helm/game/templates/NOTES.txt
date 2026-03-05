@@ -1,0 +1,2 @@
+# Display info about deployment
+servicename=$(k get service -l "app={{ .Values.appname }}" -o jsonpath="{.items[0].metadata.name}")
