@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.name }}
+  name: {{ .Values.name }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - image: {{ .Values.image }}
+        name: {{ .Values.image }}
+        volumeMounts:
+        - name: {{ .Values.vol_mount }}
+          mountPath: /usr/share/nginx/html/
+      volumes:
+        - name: {{ .Values.vol_mount }}
+          configMap:
+            name: {{ .Values.configmap }}
+
