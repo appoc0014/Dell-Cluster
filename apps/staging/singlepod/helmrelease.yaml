@@ -10,7 +10,7 @@ spec:
     createNamespace: true
   chart:
     spec:
-      chart: ../../../Helm/singlepod/
+      chart: ./Helm/singlepod
       sourceRef:
         kind: GitRepository
         name: flux-system
