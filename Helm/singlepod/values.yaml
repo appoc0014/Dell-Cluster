@@ -11,9 +11,6 @@ sql_namespace: postgres
 # Normal port for Singlepod App
 port: 80
 
-# Web App name
-appname: game-web
-
 # Container name
 image: nginx
 
@@ -28,3 +25,6 @@ replica_count: 1
 
 # Service name
 svc_name: singlepod-service
+
+nameOverride: ""
+fullnameOverride: ""
