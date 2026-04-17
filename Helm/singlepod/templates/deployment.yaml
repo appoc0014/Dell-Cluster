@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ .Values.name }}
 spec:
-  replicas: {{ .Values.replica_count }}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: {{ .Values.name }}
@@ -20,9 +20,9 @@ spec:
           ports:
             - containerPort: {{ .Values.port }}
           volumeMounts:
-            - name: {{ .Values.vol_mount }}
+            - name: {{ .Values.volumeName }}
               mountPath: /usr/share/nginx/html/
       volumes:
-        - name: {{ .Values.vol_mount }}
+        - name: {{ .Values.volumeName }}
           configMap:
-            name: {{ .Values.configmap }}
+            name: {{ .Values.configMapName }}

@@ -1,30 +1,7 @@
-# Default values for singlepod.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-# Namespace of app to operate in
 name: singlepod
-
-# Name space for postgress
-sql_namespace: postgres
-
-# Normal port for Singlepod App
-port: 80
-
-# Container name
 image: nginx
-
-# Volume name\mount
-vol_mount: singlepod-vol
-
-# Configmap
-configmap: singlepod-configmap
-
-# Replica count for deployment files
-replica_count: 1 
-
-# Service name
-svc_name: singlepod-service
-
-nameOverride: ""
-fullnameOverride: ""
+port: 80
+replicaCount: 1
+configMapName: singlepod-configmap
+serviceName: singlepod-service
+volumeName: singlepod-vol

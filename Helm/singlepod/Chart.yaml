@@ -1,13 +1,6 @@
 apiVersion: v2
 name: singlepod
-description: A Helm chart for singlepod app 
+description: Simple nginx singlepod app
 type: application
 version: 0.1.0
-appVersion: "1.16.0"
-maintainers:
-  - name: Marco Gonzalez
-    email: marco.wgu@gmail.com
-keywords:
-  - singlepod
-  - nginx
-home: 
+appVersion: "1.0"
