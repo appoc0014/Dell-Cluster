@@ -1,32 +1,25 @@
-# Namespace of app to operate in
 namespace: game
 
-# Name space for postgress
-sql_namespace: postgres
+postgres:
+  name: postgres
+  image: postgres:16-alpine
+  port: 5432
+  pvcName: postgres-pvc
+  storage: 2Gi
 
-# Normal port for Web App
-port: 80
+web:
+  name: game-web
+  image: appoc14/tictactoe-web:1.0
+  servicePort: 80
+  containerPort: 5000
+  serviceType: ClusterIP
+  nodePort: 30000
 
-# Postgress app name
-appsqlname: postgres
+replicaCount: 1
 
-# Web App name
-appname: game-web
-
-# Port for Web App
-app_port: 5000
-
-# Port for Postgres
-port_postgres: 5432
-
-# Image name for Web App
-app_image: appoc14/tictactoe-web:1.0
-
-# Image name for Posgres
-sql_image: postgres:16-alpine
-
-# Node Port for web app
-nodeport: 30000
-
-# Replica count for deployment files
-replica_count: 1 
+ingress:
+  enabled: true
+  name: game-ingress
+  host: game.x4.com
+  path: /
+  pathType: Prefix

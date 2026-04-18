@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: game
+  namespace: flux-system
+spec:
+  interval: 10m
+  targetNamespace: game
+  install:
+    createNamespace: true
+  chart:
+    spec:
+      chart: ./Helm/game
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 1m
+      reconcileStrategy: Revision

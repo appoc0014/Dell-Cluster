@@ -1,24 +1,22 @@
-# Deploy database using info from secret file for databse config
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.appsqlname }}
-  namespace: {{ .Values.namespace }}
+  name: {{ .Values.postgres.name }}
 spec:
-  replicas: {{ .Values.replica_count }}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.appsqlname }}
+      app: {{ .Values.postgres.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.appsqlname }}
+        app: {{ .Values.postgres.name }}
     spec:
       containers:
-        - name: {{ .Values.appsqlname }}
-          image: postgres:16-alpine
+        - name: {{ .Values.postgres.name }}
+          image: {{ .Values.postgres.image }}
           ports:
-            - containerPort: {{ .Values.port_postgres }}
+            - containerPort: {{ .Values.postgres.port }}
           envFrom:
             - secretRef:
                 name: postgres-secret
@@ -38,43 +36,41 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: postgres-pvc
+            claimName: {{ .Values.postgres.pvcName }}
 
 ---
-# Deploy custom web app
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.appname }}
-  namespace: {{ .Values.namespace }}
+  name: {{ .Values.web.name }}
 spec:
-  replicas: {{ .Values.replica_count }}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.appname }}
+      app: {{ .Values.web.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.appname }}
+        app: {{ .Values.web.name }}
     spec:
       containers:
         - name: web
-          image: appoc14/tictactoe-web:1.0 
+          image: {{ .Values.web.image }}
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: {{ .Values.app_port }}
+            - containerPort: {{ .Values.web.containerPort }}
           envFrom:
             - secretRef:
                 name: web-secret
           readinessProbe:
             httpGet:
               path: /
-              port: {{ .Values.app_port }}
+              port: {{ .Values.web.containerPort }}
             initialDelaySeconds: 5
             periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /
-              port: {{ .Values.app_port}}
+              port: {{ .Values.web.containerPort }}
             initialDelaySeconds: 20
             periodSeconds: 10
