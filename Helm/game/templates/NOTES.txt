@@ -1,1 +1,5 @@
+{{- if .Values.ingress.enabled }}
 App is live at: http://{{ .Values.ingress.host }}
+{{- else }}
+App deployed. No ingress enabled — access via port-forward or NodePort.
+{{- end }}
