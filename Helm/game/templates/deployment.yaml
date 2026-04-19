@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Values.postgres.name }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.postgres.name }}
@@ -15,6 +15,13 @@ spec:
       containers:
         - name: {{ .Values.postgres.name }}
           image: {{ .Values.postgres.image }}
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256mi"
+              cpu: "250m"
           ports:
             - containerPort: {{ .Values.postgres.port }}
           envFrom:
@@ -56,6 +63,13 @@ spec:
       containers:
         - name: web
           image: {{ .Values.web.image }}
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256mi"
+              cpu: "250m"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.web.containerPort }}
