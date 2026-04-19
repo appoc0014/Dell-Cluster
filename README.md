@@ -1,6 +1,6 @@
-#  DevOps GitOps Project
+# 🚀 DevOps GitOps Project
 
-##  Project Overview
+## 🚀 Project Overview
 
 This repository contains a set of **DevOps-focused projects** built to demonstrate modern infrastructure and application deployment practices using **Kubernetes, Helm, and GitOps with FluxCD**.
 
@@ -8,8 +8,9 @@ The work in this repo started with deploying applications using raw Kubernetes m
 
 ---
 
-##  Architecture
+## 🏗️ Architecture
 
+```mermaid
 flowchart TD
 
     A[Developer Pushes Code] --> B[Git Repository]
@@ -32,7 +33,7 @@ flowchart TD
 
 ---
 
-##  What This Repository Demonstrates
+## 🧠 What This Repository Demonstrates
 
 - Helm-based application packaging
 - FluxCD GitOps workflows
@@ -42,7 +43,7 @@ flowchart TD
 
 ---
 
-##  Technologies Used
+## 🛠️ Technologies Used
 
 - Kubernetes
 - Helm
@@ -54,6 +55,6 @@ flowchart TD
 
 ---
 
-##  Purpose
+## 📈 Purpose
 
 The goal of this repository is to build hands-on experience with tools and patterns commonly used in modern DevOps environments while creating production-style deployments.
