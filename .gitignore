@@ -1,3 +1,6 @@
+# Ignore keys folder
+/key/
+
 # Local .terraform directories
 .terraform/
 
