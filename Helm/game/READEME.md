@@ -111,7 +111,7 @@ sops --encrypt --age <your-public-key> \
 
 ```bash
 # Clone the repo
-git clone https://github.com/appoc14/<your-repo>.git
+git clone https://github.com/appoc0014/Dell-Cluster/tree/main/Helm/game
 cd <your-repo>
 
 # Install the chart
