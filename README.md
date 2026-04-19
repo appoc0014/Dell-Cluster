@@ -1,60 +1,34 @@
-# 🚀 DevOps GitOps Project
+Project Overview
 
-## 🚀 Project Overview
+This repository contains a set of DevOps-focused projects built to demonstrate modern infrastructure and application deployment practices using Kubernetes, Helm, and GitOps with FluxCD.
 
-This repository contains a set of **DevOps-focused projects** built to demonstrate modern infrastructure and application deployment practices using **Kubernetes, Helm, and GitOps with FluxCD**.
+The work in this repo started with deploying applications using raw Kubernetes manifests and evolved into a more scalable and maintainable approach using Helm charts and Flux-based GitOps workflows.
 
-The work in this repo started with deploying applications using raw Kubernetes manifests and evolved into a more scalable and maintainable approach using **Helm charts** and **Flux-based GitOps workflows**.
+Key areas covered include:
 
----
+Packaging applications with Helm
+Managing deployments using FluxCD
+Implementing GitOps workflows for continuous delivery
+Securing secrets using SOPS + age encryption
+Deploying stateful and stateless applications on Kubernetes
+Building a structured, multi-environment repository layout
 
-## 🏗️ Architecture
 
-```mermaid
-flowchart TD
+What This Repository Demonstrates
 
-    A[Developer Pushes Code] --> B[Git Repository]
+This project reflects a real-world progression from traditional system administration practices into modern DevOps workflows:
 
-    B --> C[FluxCD GitRepository]
-    C --> D[HelmRelease]
+Migrating applications from raw YAML to Helm-managed deployments
+Designing reusable and configurable Helm charts
+Debugging and resolving Flux reconciliation and Helm templating issues
+Managing Kubernetes resources through declarative Git-based automation
+Applying best practices for namespace management, configuration, and security
 
-    D --> E[Kubernetes Cluster]
-
-    E --> F[Ingress Controller (Traefik)]
-    F --> G[Service (ClusterIP)]
-    G --> H[Game Web Deployment]
-
-    H --> I[PostgreSQL Deployment]
-    I --> J[Persistent Volume Claim]
-
-    C --> K[SOPS Decryption]
-    K --> E
-```
-
----
-
-## 🧠 What This Repository Demonstrates
-
-- Helm-based application packaging
-- FluxCD GitOps workflows
-- Kubernetes deployments (stateful + stateless)
-- Secure secret management using SOPS + age
-- Migration from raw manifests to Helm
-
----
-
-## 🛠️ Technologies Used
-
-- Kubernetes
-- Helm
-- FluxCD
-- SOPS + age
-- Docker
-- Traefik Ingress
-- PostgreSQL
-
----
-
-## 📈 Purpose
-
-The goal of this repository is to build hands-on experience with tools and patterns commonly used in modern DevOps environments while creating production-style deployments.
+Technologies Used
+Kubernetes
+Helm
+FluxCD (GitOps)
+SOPS + age (Secrets Encryption)
+Docker
+Traefik Ingress
+PostgreSQL
