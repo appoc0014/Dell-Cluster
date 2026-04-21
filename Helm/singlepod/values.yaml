@@ -1,5 +1,5 @@
 name: singlepod
-image: nginx
+image: nginx:1.25-alpine
 port: 80
 replicaCount: 1
 configMapName: singlepod-configmap
