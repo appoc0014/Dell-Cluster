@@ -47,7 +47,9 @@ This repo reflects a real-world progression from traditional sysadmin practices 
 
 | Project | Description |
 |---|---|
-| [`game/`](./game) | Tic-Tac-Toe web app with PostgreSQL backend, deployed via Helm and Flux |
+| [`game/`](./Helm/game) | Tic-Tac-Toe web app with PostgreSQL backend, deployed via Helm and Flux |
+| [`singlepod/`](./Helm/singlepod) | Single nginx container serving a custom HTML page via ConfigMap volume mount, deployed with Helm |
+
 
 ---
 
