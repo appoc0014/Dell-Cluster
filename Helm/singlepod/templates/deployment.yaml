@@ -17,8 +17,27 @@ spec:
       containers:
         - name: {{ .Values.name }}
           image: {{ .Values.image }}
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
           ports:
             - containerPort: {{ .Values.port }}
+          readinessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.web.containerPort }}
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.web.containerPort }}
+            initialDelaySeconds: 20
+            periodSeconds: 10
           volumeMounts:
             - name: {{ .Values.volumeName }}
               mountPath: /usr/share/nginx/html/
@@ -26,3 +45,4 @@ spec:
         - name: {{ .Values.volumeName }}
           configMap:
             name: {{ .Values.configMapName }}
+
