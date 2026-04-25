@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bookshelf
+  namespace: bookshelf
 spec:
   replicas: 1
   selector:
@@ -22,10 +23,29 @@ spec:
       containers:
         - name: bookshelf
           image: ghcr.io/advplyr/audiobookshelf:2.17.2
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
 
           envFrom:
             - configMapRef:
                 name: bookshelf-configmap
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3005
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3005
+            initialDelaySeconds: 30
+            periodSeconds: 10
 
           ports:
             - containerPort: 3005
