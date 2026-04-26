@@ -5,7 +5,7 @@ metadata:
   namespace: bookshelf
 spec:
   ports:
-    - port: 80
+    - port: 3005
       targetPort: 3005
       protocol: TCP 
   selector:
