@@ -3,5 +3,5 @@ kind: Kustomization
 namespace: bookshelf
 resources:
   - ../../base/bookshelf/
-    #  - cloudflare.yaml
-    #  - test-secret.yaml
+  - cloudflare.yaml
+  

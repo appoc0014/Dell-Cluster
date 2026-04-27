@@ -6,6 +6,8 @@ metadata:
 spec:
   ports:
     - port: 3005
+      targetPort: 3005
+      protocol: TCP 
   selector:
     app: bookshelf
   type: ClusterIP
