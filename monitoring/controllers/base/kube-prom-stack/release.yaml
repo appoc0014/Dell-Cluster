@@ -30,3 +30,20 @@ spec:
       name: grafana-secret
       valuesKey: admin-password
       targetPath: grafana.adminPassword
+  grafana:
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  prometheus:
+    prometheusSpec:
+      resources:
+        requests:
+          memory: "512Mi"
+          cpu: "200m"
+      limits:
+        memory: "1Gi"
+        cpu: "500m"
