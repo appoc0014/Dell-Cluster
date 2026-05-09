@@ -67,6 +67,11 @@ spec:
               memory: "128Mi"
               cpu: "100m"
 
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ .Values.postgres.pvcName }}
+
 ---
 apiVersion: apps/v1
 kind: Deployment
