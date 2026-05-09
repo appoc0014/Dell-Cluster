@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: postgres
+  namespace: game
+  labels:
+    release: kube-prometheus-stack
+spec:
+  namespaceSelector:
+    matchNames:
+      - game
+  selector:
+    matchLabels:
+      app: {{ .Values.postgres.name }}
+  endpoints:
+    - port: metrics
+      path: /metrics
+      interval: 30s
