@@ -43,6 +43,10 @@ spec:
         limits:
           memory: "512Mi"
           cpu: "500m"
+      sidecar:
+        dashboards:
+          enabled: true
+          label: grafana_dashboard
 
     prometheus:
       prometheusSpec:
@@ -56,3 +60,4 @@ spec:
           limits:
             memory: "1Gi"
             cpu: "500m"
+
