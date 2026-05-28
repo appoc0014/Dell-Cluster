@@ -3,10 +3,16 @@ kind: Ingress
 metadata:
   name: ingress-monitor
   namespace: monitoring
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: traefik
+  tls:
+    - hosts:
+        - monitor.marcodevops.org
+      secretName: monitor-tls
   rules:
-    - host: monitor.x4.com
+    - host: monitor.marcodevops.org
       http:
         paths:
           - backend:

@@ -17,6 +17,6 @@ replicaCount: 1
 ingress:
   enabled: true
   name: game-ingress
-  host: game.x4.com
+  host: game.marcodevops.org
   path: /
   pathType: Prefix
