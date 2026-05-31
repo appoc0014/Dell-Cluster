@@ -7,7 +7,7 @@ postgres:
 
 web:
   name: game-web
-  image: appoc14/tictactoe-web:b07d65a
+  image: appoc14/tictactoe-web:304d667
   servicePort: 80
   containerPort: 5000
   serviceType: ClusterIP
